@@ -1,0 +1,661 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Biznaga — Handcrafted Travel for Spain</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#F5F0E8',
+            terracotta: '#C4622D',
+            cobalt: '#3D52A0',
+            'cobalt-dark': '#141A6B',
+            'bodega-espresso': '#2C1A0E',
+            greige: '#EDE8DF',
+            gold: '#B8860B',
+            ink: '#1C1916',
+            dust: '#8C7B6B',
+            'cream-card': '#FDF8F0'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 35s linear infinite;
+    }
+    @keyframes scrollDown {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    @keyframes scrollUp {
+      0% { transform: translateY(-50%); }
+      100% { transform: translateY(0); }
+    }
+    .carousel-down {
+      animation: scrollDown 28s linear infinite;
+    }
+    .carousel-up {
+      animation: scrollUp 28s linear infinite;
+    }
+    .mask-vertical-fade {
+      mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .drag-slider {
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .drag-slider.active {
+      cursor: grabbing;
+    }
+    .testimonial-card {
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-8px) scale(1.02) rotate(0deg) !important;
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.18);
+      z-index: 30 !important;
+    }
+  </style>
+</head>
+<body class="bg-white text-ink font-sans antialiased selection:bg-terracotta selection:text-white overflow-x-hidden">
+<!-- SECTION 1: Sticky Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E5DEC9] transition-all duration-300"><div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between gap-4"><div class="flex items-center gap-8 lg:gap-12"><a class="font-serif text-2xl md:text-3xl tracking-[0.2em] text-cobalt font-bold flex-shrink-0" href="#">BIZNAGA</a><nav class="hidden lg:flex items-center space-x-7 text-[14px] text-dust font-medium"><a class="hover:text-terracotta transition-colors py-2" href="#">Home</a><div class="relative group py-2"><button class="inline-flex items-center gap-1 hover:text-terracotta transition-colors focus:outline-none cursor-pointer font-medium"><span class="">About Us</span><span class="text-[10px] text-dust group-hover:text-terracotta transition-transform group-hover:rotate-180 duration-200">▼</span></button><div class="absolute left-0 top-full hidden group-hover:block pt-2 z-50 w-64"><div class="bg-cream-card rounded-[8px] border border-[#E8DFD0] shadow-xl py-2 px-1 backdrop-blur-md"><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#story">About Us: The Biznaga Story</a><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#story">About Spain</a></div></div></div><div class="relative group py-2"><button class="inline-flex items-center gap-1 hover:text-terracotta transition-colors focus:outline-none cursor-pointer font-medium"><span class="">Experience Spain</span><span class="text-[10px] text-dust group-hover:text-terracotta transition-transform group-hover:rotate-180 duration-200">▼</span></button><div class="absolute left-0 top-full hidden group-hover:block pt-2 z-50 w-72"><div class="bg-cream-card rounded-[8px] border border-[#E8DFD0] shadow-xl py-2 px-1 backdrop-blur-md"><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#experience">Surrender to Spain</a><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#experience">Private Groups</a><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#experience">Independent Travellers</a><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#experience">Collaboration with Simon Marnie</a><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#experience">Collaboration with Lyndey Milan</a></div></div></div><div class="relative group py-2"><button class="inline-flex items-center gap-1 hover:text-terracotta transition-colors focus:outline-none cursor-pointer font-medium"><span class="">Get Inspired</span><span class="text-[10px] text-dust group-hover:text-terracotta transition-transform group-hover:rotate-180 duration-200">▼</span></button><div class="absolute left-0 top-full hidden group-hover:block pt-2 z-50 w-56"><div class="bg-cream-card rounded-[8px] border border-[#E8DFD0] shadow-xl py-2 px-1 backdrop-blur-md"><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#journal">Travel Journal</a><a class="block px-4 py-2.5 text-[13px] text-ink hover:text-terracotta hover:bg-[#F5F0E8] rounded transition-colors font-medium" href="#destinations">Trip Inspiration</a></div></div></div><a class="hover:text-terracotta transition-colors py-2" href="#contact">Contact</a></nav></div><div class="flex items-center space-x-6 flex-shrink-0"><a class="px-5 py-2.5 rounded text-[13px] tracking-wider uppercase font-medium border border-terracotta text-terracotta hover:bg-terracotta hover:text-white transition-all shadow-sm" href="#cta">Book a Discovery Call</a></div></div></header>
+<!-- SECTION 2: Hero (Full-Bleed Photographic Background) -->
+<section class="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden border-b border-[#E5DEC9]">
+<!-- Background Image Container -->
+<div class="absolute inset-0 z-0">
+<img alt="Sun-drenched Andalusia Spanish coastal street" class="w-full h-full object-cover object-center scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1VFO6yzGi1JZJxbmIvcX_raioGNVxUiadx7RdpMi6rt_lLRAqufxoyHpMsIyl9NuBjMAQ4SppQw655RI1zY4O6VTXsVQWaPF3UsmpkajFEwtBEq8-HM8nO_ofItSYL_hcxYcUVnFmDDBfB7_hbtq1Ss8XqpJ6P6bMLdezaYSnhQ3bXcyNymUBk-RPETrGmLP3VZOMCC8KUDPN3JMVFAjYyURzNycpSNc6E3NY7lqJmZvDaoIm7L2EW7WNM">
+<!-- Elegant subtle warm dark gradient overlay for pristine contrast -->
+<div class="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-transparent"></div>
+</div>
+<!-- Hero Content Overlay -->
+<div class="relative z-10 max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
+<div class="max-w-2xl text-left">
+<span class="inline-block text-[13px] tracking-[0.28em] text-gold font-bold uppercase mb-4 drop-shadow-sm">España —</span>
+<h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[76px] leading-[1.08] text-white font-bold mb-6 drop-shadow-md">
+          Handcrafted <br>
+<span class="italic font-normal text-ivory">Travel for Spain</span>
+</h1>
+<p class="font-serif italic text-xl md:text-2xl text-ivory/90 mb-10 max-w-lg leading-relaxed drop-shadow-sm">
+          Every journey is made entirely your own.
+        </p>
+<div class="flex flex-wrap items-center gap-6 mb-12">
+<a class="px-8 py-4 bg-terracotta text-white rounded text-[15px] font-medium tracking-wide hover:bg-[#a85223] transition-all shadow-lg transform hover:-translate-y-0.5" href="#cta">
+            Plan Your Spain Journey
+          </a>
+<a class="inline-flex items-center gap-3 text-ivory font-medium text-[15px] hover:text-gold transition-colors backdrop-blur-xs" href="#story">
+<span class="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-white text-xs pl-0.5 shadow-sm hover:bg-white/30 transition-colors">▶</span>
+            Watch Our Story
+          </a>
+</div>
+<!-- Floating Badge anchored stylishly -->
+<div class="inline-flex items-center gap-3.5 bg-white/95 backdrop-blur-md px-5 py-3 rounded-lg border border-gold/30 shadow-xl">
+<div class="w-6 h-6 rounded overflow-hidden flex-shrink-0 bg-cobalt/10 flex items-center justify-center text-cobalt text-xs font-serif font-bold">
+            ✦
+          </div>
+<div>
+<span class="text-[11px] tracking-widest uppercase text-dust font-semibold block">Private Journeys</span>
+<span class="font-serif text-[15px] text-ink italic font-semibold">Surrender to Spain</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Moving Marquee Ribbon -->
+<section class="bg-cobalt h-12 flex items-center overflow-hidden relative">
+<div class="animate-marquee whitespace-nowrap text-ivory text-[13px] font-bold tracking-[3px] uppercase select-none"><span class="mx-4">HANDCRAFTED FOR YOU <span class="text-gold mx-3 font-bold">•</span> SURRENDER TO SPAIN <span class="text-gold mx-3 font-bold">•</span> LA BUENA VIDA <span class="text-gold mx-3 font-bold">•</span> UNHURRIED DAYS <span class="text-gold mx-3 font-bold">•</span> PRIVATE JOURNEYS <span class="text-gold mx-3 font-bold">•</span> MADE FOR YOU <span class="text-gold mx-3 font-bold">•</span> ESPAÑA <span class="text-gold mx-3 font-bold">•</span> HANDCRAFTED TRAVEL <span class="text-gold mx-3 font-bold">•</span></span>
+<span class="mx-4">HANDCRAFTED FOR YOU <span class="text-gold mx-3 font-bold">•</span> SURRENDER TO SPAIN <span class="text-gold mx-3 font-bold">•</span> LA BUENA VIDA <span class="text-gold mx-3 font-bold">•</span> UNHURRIED DAYS <span class="text-gold mx-3 font-bold">•</span> PRIVATE JOURNEYS <span class="text-gold mx-3 font-bold">•</span> MADE FOR YOU <span class="text-gold mx-3 font-bold">•</span> ESPAÑA <span class="text-gold mx-3 font-bold">•</span> HANDCRAFTED TRAVEL <span class="text-gold mx-3 font-bold">•</span></span></div>
+</section>
+<!-- SECTION 4: Brand Philosophy Statement -->
+<section class="py-28 md:py-36 px-6 max-w-4xl mx-auto text-center bg-white text-ink">
+<blockquote class="font-serif italic text-3xl md:text-5xl text-ink leading-tight mb-8">
+      “Biznaga is not for everyone.”
+    </blockquote>
+<p class="text-dust text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 font-normal">
+      It is for travellers who want more than a checklist. For those who want to slow down, to feel Spain rather than see it, to have the kind of access that isn’t listed on any booking site.
+    </p>
+<div class="w-16 h-[1px] bg-gold mx-auto mb-8"></div>
+<div class="text-[13px] tracking-[0.2em] uppercase font-medium text-dust flex items-center justify-center gap-4">
+<span class="">Handcrafted</span>
+<span class="text-gold">·</span>
+<span class="">Unhurried</span>
+<span class="text-gold">·</span>
+<span class="">Entirely Yours</span>
+</div>
+</section>
+<!-- SECTION 5: Brand Story / About -->
+<section class="w-full bg-cobalt-dark py-24 md:py-32 px-6 overflow-hidden border-y border-[#26318C]" id="story">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Left half: Organic scattered postcard collage -->
+<div class="lg:col-span-6 relative min-h-[460px] md:min-h-[560px] flex items-center justify-center p-4">
+<!-- Postcard 1: Wine & Tapas in Granada -->
+<div class="absolute w-[240px] sm:w-[280px] md:w-[320px] bg-white p-3.5 rounded-[8px] shadow-2xl transition-all duration-300 hover:scale-105 hover:z-30 hover:rotate-0 transform -rotate-[12deg] -translate-x-12 -translate-y-16">
+<img alt="Sharing wine and tapas in Granada tavern" class="w-full h-[220px] md:h-[260px] object-cover rounded-[6px]" src="https://lh3.googleusercontent.com/aida/AEtjO1XhFIhrGa_LO1KWXkbUYmx4NDVuNM9swUYkF1YERiNDCBncYFAsPsAO4AWZHoBOWtQJCU3lQxNRjZ3JHa-Q2TWoBaVz-gntPIoFtBr0YH4mkXL9l1MS8msTWzIeuxWyIt-_B2LC-T7R7Dt83uZU3KbAkYYivlpGaUp8qkZT2WLZ1DocSztoSfONx_-DHxPBWivfOUE-4nckroRY_41wM-VEBfP-XL_O8rocyJWjqYSOsrTa51f93Vr69n4">
+<div class="pt-3 flex justify-between items-center text-[11px] text-[#6B7280]">
+<span class="font-serif italic text-ink font-semibold">Taverna Elvira · Granada</span>
+<span class="text-terracotta">Oct 2025</span>
+</div>
+</div>
+<!-- Postcard 2: Casey with artisan in Seville courtyard -->
+<div class="absolute w-[250px] sm:w-[300px] md:w-[340px] bg-white p-3.5 rounded-[8px] shadow-2xl transition-all duration-300 hover:scale-105 hover:z-30 hover:rotate-0 transform rotate-[6deg] translate-x-10 translate-y-12 z-10">
+<img alt="Casey conversing with Seville ceramic artisan" class="w-full h-[200px] md:h-[240px] object-cover rounded-[6px]" src="https://lh3.googleusercontent.com/aida/AEtjO1Uv3pfcFNt-ERSayVoFaSkNHu9aUNCRGi_U83oSEBwjdrMSUQxPFeHFXIRASqGY-JYtnThBQUPk7jDhOGwn_REn0l5aN3PNVxOKGSN6827M2L7TB-ZT9yNC8kXkUUSmfNxc1ntDBHWfhx_Dx98Xsv_NKoQgIb_G46X2T337IhLmr_ErrMMO9KhaRnzTsD0nkTg5YACMMfLwgkB2mWUuuxfY8xsqYYWXEhJP7e_28S3n4RgoLx4Ptrv9gwc">
+<div class="pt-3 flex justify-between items-center text-[11px] text-[#6B7280]">
+<span class="font-serif italic text-ink font-semibold">Casey &amp; Maestro Juan · Sevilla</span>
+<span class="text-terracotta">Field Notes</span>
+</div>
+</div>
+<!-- Postcard 3: Flamenco Guitar on rustic patio -->
+<div class="absolute w-[210px] sm:w-[240px] md:w-[270px] bg-white p-3 rounded-[8px] shadow-2xl transition-all duration-300 hover:scale-105 hover:z-30 hover:rotate-0 transform -rotate-[5deg] translate-x-16 -translate-y-24 z-20">
+<img alt="Spanish flamenco guitar and olives" class="w-full h-[180px] md:h-[210px] object-cover rounded-[6px]" src="https://lh3.googleusercontent.com/aida/AEtjO1XuSyr9zLt9xSUDA7qO3U4yTK1v-Oc6qxDbSJxKFu97Xs33TVdtwzahf8v7lT_o4kwf1tckPS2BKDQuB7mruPTGPqVorN6X3Cb-m7ZIgKTo4LKAJLNB56VOyyKcGRuUCbyjrmDOioycfMKBNex3SfDC2GUAC9IyKWpTEvA80eZSVdfLczWPVXS0sl9xjFqN038BB4pZS23EtCW-7EkBw1RKFxirZCkbzYQBBtBvF31JWtLT5E32u37YYL0">
+<div class="pt-2.5 flex justify-between items-center text-[10px] text-[#6B7280]">
+<span class="font-serif italic text-ink font-semibold">Triana Patio · Sevilla</span>
+<span class="text-gold">✦ Sunset</span>
+</div>
+</div>
+<!-- Postcard 4: Mediterranean Coastal Village -->
+<div class="hidden sm:block absolute w-[190px] md:w-[220px] bg-white p-2.5 rounded-[8px] shadow-xl transition-all duration-300 hover:scale-105 hover:z-30 hover:rotate-0 transform rotate-[10deg] -translate-x-24 translate-y-28">
+<img alt="White village coastline" class="w-full h-[160px] md:h-[180px] object-cover rounded-[4px]" src="https://lh3.googleusercontent.com/aida/AEtjO1VFO6yzGi1JZJxbmIvcX_raioGNVxUiadx7RdpMi6rt_lLRAqufxoyHpMsIyl9NuBjMAQ4SppQw655RI1zY4O6VTXsVQWaPF3UsmpkajFEwtBEq8-HM8nO_ofItSYL_hcxYcUVnFmDDBfB7_hbtq1Ss8XqpJ6P6bMLdezaYSnhQ3bXcyNymUBk-RPETrGmLP3VZOMCC8KUDPN3JMVFAjYyURzNycpSNc6E3NY7lqJmZvDaoIm7L2EW7WNM">
+<div class="pt-2 text-[10px] text-[#6B7280] font-serif italic text-center">
+            Frigiliana, Andalucía
+          </div>
+</div>
+</div>
+<!-- Right half: Clean, disciplined typographic storytelling -->
+<div class="lg:col-span-6 text-left max-w-xl lg:pl-6">
+<span class="text-gold text-[12px] tracking-[0.25em] uppercase font-semibold block mb-3">Our Roots &amp; Founder</span>
+<h2 class="font-serif font-bold text-4xl sm:text-5xl lg:text-[60px] leading-[1.1] text-white mb-8">
+          Every Journey Begins With a Conversation
+        </h2>
+<p class="text-[#D1D5DB] text-base sm:text-lg leading-relaxed mb-6 font-normal">
+          Biznaga began not as an agency, but as an enduring romance with Spain’s hidden corners. Founded by Casey after years spent living, wandering, and breaking bread alongside winemakers in La Rioja, flamenco dynasties in Triana, and ceramic masters in Seville, our approach is unapologetically personal.
+        </p>
+<p class="text-[#9CA3AF] text-sm sm:text-base leading-relaxed mb-10 font-normal">
+          We don’t curate tours from brochures or algorithms. Every relationship is cultivated through handshakes, shared bottles, and quiet back-alley recommendations that never find their way into mainstream guidebooks. When we design your journey, we open doors to the people who give Spain its pulse.
+        </p>
+<div>
+<a class="inline-block px-8 py-3.5 rounded border border-cobalt text-white font-medium text-[14px] tracking-wider uppercase hover:bg-cobalt hover:border-cobalt transition-all duration-200 shadow-sm" href="#contact">
+            Read Our Story
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: How You Can Experience Spain (Tour Types) -->
+<section class="py-28 px-6 bg-white border-b border-[#E8DFC8] text-ink" id="experience">
+<div class="max-w-[1280px] mx-auto">
+<div class="mb-14 text-left">
+<span class="text-terracotta text-[12px] tracking-[0.25em] uppercase font-bold block mb-2">Curated Journeys</span>
+<h2 class="font-serif font-semibold text-3xl md:text-5xl text-ink">
+          How You Can Experience Spain With Us
+        </h2>
+</div>
+<!-- Asymmetric cards: 1 large left, 2 stacked right -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Large Card: Surrender to Spain (Flagship) -->
+<div class="lg:col-span-7 bg-cream-card rounded-[12px] overflow-hidden border border-[#E8DFD0] shadow-sm flex flex-col group hover:shadow-md transition-shadow">
+<div class="h-[340px] md:h-[400px] relative overflow-hidden">
+<img alt="Flamenco and Andalusian culture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1XuSyr9zLt9xSUDA7qO3U4yTK1v-Oc6qxDbSJxKFu97Xs33TVdtwzahf8v7lT_o4kwf1tckPS2BKDQuB7mruPTGPqVorN6X3Cb-m7ZIgKTo4LKAJLNB56VOyyKcGRuUCbyjrmDOioycfMKBNex3SfDC2GUAC9IyKWpTEvA80eZSVdfLczWPVXS0sl9xjFqN038BB4pZS23EtCW-7EkBw1RKFxirZCkbzYQBBtBvF31JWtLT5E32u37YYL0">
+<div class="absolute bottom-4 left-6 bg-white/95 px-4 py-2 rounded-full border border-gold/30 shadow-sm flex items-center gap-2">
+<span class="text-gold text-xs">✦</span>
+<span class="text-[12px] font-serif font-bold text-cobalt uppercase tracking-wider">Flagship Experience</span>
+</div>
+</div>
+<div class="p-8 md:p-10 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-serif italic font-bold text-2xl md:text-3xl text-cobalt mb-3">
+                Surrender to Spain
+              </h3>
+<p class="text-base leading-relaxed mb-6 text-[#56433a]">
+                Our signature immersive journey through Andalusia, Madrid, and Catalonia. Designed for those who wish to step off the beaten track and surrender completely to local rhythms, private bodega tastings, and historic palace access.
+              </p>
+</div>
+<a class="inline-flex items-center text-terracotta font-medium hover:translate-x-1 transition-transform" href="#cta">
+              Discover Surrender to Spain <span class="ml-2">→</span>
+</a>
+</div>
+</div>
+<!-- Stacked 2 cards right -->
+<div class="lg:col-span-5 flex flex-col gap-8">
+<!-- Card 2: Private Group Travel -->
+<div class="bg-cream-card rounded-[12px] overflow-hidden border border-[#E8DFD0] shadow-sm flex flex-col sm:flex-row flex-1 group hover:shadow-md transition-shadow">
+<div class="sm:w-2/5 h-48 sm:h-auto relative overflow-hidden">
+<img alt="Private Group dining" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1XhFIhrGa_LO1KWXkbUYmx4NDVuNM9swUYkF1YERiNDCBncYFAsPsAO4AWZHoBOWtQJCU3lQxNRjZ3JHa-Q2TWoBaVz-gntPIoFtBr0YH4mkXL9l1MS8msTWzIeuxWyIt-_B2LC-T7R7Dt83uZU3KbAkYYivlpGaUp8qkZT2WLZ1DocSztoSfONx_-DHxPBWivfOUE-4nckroRY_41wM-VEBfP-XL_O8rocyJWjqYSOsrTa51f93Vr69n4">
+</div>
+<div class="p-6 sm:w-3/5 flex flex-col justify-between">
+<div>
+<span class="text-[11px] font-bold text-dust uppercase tracking-wider block mb-1">Small Gatherings</span>
+<h4 class="font-serif font-bold text-xl text-cobalt mb-2 text-ink">Private Group Travel</h4>
+<p class="text-sm leading-relaxed mb-4 text-[#56433a]">
+                  Shared journeys for families and intimate friend groups, hosted with private guides and villa estates.
+                </p>
+</div>
+<a class="text-terracotta text-sm font-medium hover:translate-x-1 transition-transform inline-block" href="#cta">
+                Explore Private Groups →
+              </a>
+</div>
+</div>
+<!-- Card 3: Independent Travel -->
+<div class="bg-cream-card rounded-[12px] overflow-hidden border border-[#E8DFD0] shadow-sm flex flex-col sm:flex-row flex-1 group hover:shadow-md transition-shadow">
+<div class="sm:w-2/5 h-48 sm:h-auto relative overflow-hidden">
+<img alt="Independent artisan travel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1Uv3pfcFNt-ERSayVoFaSkNHu9aUNCRGi_U83oSEBwjdrMSUQxPFeHFXIRASqGY-JYtnThBQUPk7jDhOGwn_REn0l5aN3PNVxOKGSN6827M2L7TB-ZT9yNC8kXkUUSmfNxc1ntDBHWfhx_Dx98Xsv_NKoQgIb_G46X2T337IhLmr_ErrMMO9KhaRnzTsD0nkTg5YACMMfLwgkB2mWUuuxfY8xsqYYWXEhJP7e_28S3n4RgoLx4Ptrv9gwc">
+</div>
+<div class="p-6 sm:w-3/5 flex flex-col justify-between">
+<div>
+<span class="text-[11px] font-bold text-dust uppercase tracking-wider block mb-1">Bespoke Solo &amp; Couples</span>
+<h4 class="font-serif font-bold text-xl text-cobalt mb-2 text-ink">Independent Travel</h4>
+<p class="text-sm leading-relaxed mb-4 text-[#56433a]">
+                  A custom self-paced itinerary curated with round-the-clock local concierge assistance.
+                </p>
+</div>
+<a class="text-terracotta text-sm font-medium hover:translate-x-1 transition-transform inline-block" href="#cta">
+                Curate Your Itinerary →
+              </a>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-14 text-center">
+<a class="inline-block px-10 py-4 bg-terracotta text-white rounded font-serif text-lg tracking-wide hover:bg-[#a85223] transition-all shadow-md" href="#cta">
+          Plan Your Trip to Spain
+        </a>
+</div>
+</div>
+</section>
+<!-- SECTION 7: Top Places in Spain (Dual Carousel + Destination List) -->
+<section id="destinations" class="py-28 px-6 text-ink border-b border-[#DDD3C1] relative bg-[#D8C7B5]"><div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"><div class="lg:col-span-5 flex flex-col justify-between py-2"><div><span class="text-terracotta text-xs font-bold tracking-[0.25em] uppercase block mb-4">DESTINATIONS</span><h2 class="font-serif italic font-bold text-4xl sm:text-5xl lg:text-[56px] text-[#1C1916] leading-[1.1] mb-12">Places That Will Stay With You</h2><div class="divide-y divide-[#8C7B6B]/30 border-y border-[#8C7B6B]/30"><div class="group py-5 cursor-pointer flex items-baseline justify-between transition-all hover:border-terracotta"><div class="flex items-baseline gap-5"><span class="font-serif text-2xl sm:text-3xl text-terracotta font-medium transition-colors">01/</span><span class="font-serif text-xl sm:text-2xl text-[#1C1916] group-hover:text-terracotta group-hover:translate-x-1.5 transition-all font-medium">Seville &amp; Andalusia</span></div><span class="text-[#56433a] font-sans text-xs sm:text-sm font-normal">Sun &amp; Flamenco</span></div><div class="group py-5 cursor-pointer flex items-baseline justify-between transition-all hover:border-terracotta"><div class="flex items-baseline gap-5"><span class="font-serif text-2xl sm:text-3xl text-terracotta font-medium transition-colors">02/</span><span class="font-serif text-xl sm:text-2xl text-[#1C1916] group-hover:text-terracotta group-hover:translate-x-1.5 transition-all font-medium">Granada &amp; The Alhambra</span></div><span class="text-[#56433a] font-sans text-xs sm:text-sm font-normal">Moorish Wonder</span></div><div class="group py-5 cursor-pointer flex items-baseline justify-between transition-all hover:border-terracotta"><div class="flex items-baseline gap-5"><span class="font-serif text-2xl sm:text-3xl text-terracotta font-medium transition-colors">03/</span><span class="font-serif text-xl sm:text-2xl text-[#1C1916] group-hover:text-terracotta group-hover:translate-x-1.5 transition-all font-medium">San Sebastián &amp; Basque</span></div><span class="text-[#56433a] font-sans text-xs sm:text-sm font-normal">Pintxos &amp; Coastline</span></div><div class="group py-5 cursor-pointer flex items-baseline justify-between transition-all hover:border-terracotta"><div class="flex items-baseline gap-5"><span class="font-serif text-2xl sm:text-3xl text-terracotta font-medium transition-colors">04/</span><span class="font-serif text-xl sm:text-2xl text-[#1C1916] group-hover:text-terracotta group-hover:translate-x-1.5 transition-all font-medium">Mallorca &amp; The Balearics</span></div><span class="text-[#56433a] font-sans text-xs sm:text-sm font-normal">Cala Coves &amp; Olive Groves</span></div></div></div><div class="mt-10"><a href="#cta" class="inline-flex items-center gap-2 text-terracotta font-bold text-xs tracking-widest uppercase hover:underline transition-all group"><span class="">EXPLORE ALL OF SPAIN</span><span class="group-hover:translate-x-1 transition-transform">→</span></a></div></div><div class="lg:col-span-7"><div class="relative h-[560px] md:h-[600px] overflow-hidden mask-vertical-fade grid grid-cols-2 gap-4 sm:gap-5 select-none pointer-events-none"><div class="carousel-down flex flex-col gap-4 sm:gap-5"><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1VFO6yzGi1JZJxbmIvcX_raioGNVxUiadx7RdpMi6rt_lLRAqufxoyHpMsIyl9NuBjMAQ4SppQw655RI1zY4O6VTXsVQWaPF3UsmpkajFEwtBEq8-HM8nO_ofItSYL_hcxYcUVnFmDDBfB7_hbtq1Ss8XqpJ6P6bMLdezaYSnhQ3bXcyNymUBk-RPETrGmLP3VZOMCC8KUDPN3JMVFAjYyURzNycpSNc6E3NY7lqJmZvDaoIm7L2EW7WNM" alt="Andalusian coastal village" class="w-full h-[220px] sm:h-[260px] object-cover"></div><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1XhFIhrGa_LO1KWXkbUYmx4NDVuNM9swUYkF1YERiNDCBncYFAsPsAO4AWZHoBOWtQJCU3lQxNRjZ3JHa-Q2TWoBaVz-gntPIoFtBr0YH4mkXL9l1MS8msTWzIeuxWyIt-_B2LC-T7R7Dt83uZU3KbAkYYivlpGaUp8qkZT2WLZ1DocSztoSfONx_-DHxPBWivfOUE-4nckroRY_41wM-VEBfP-XL_O8rocyJWjqYSOsrTa51f93Vr69n4" alt="Friends sharing tapas in Granada" class="w-full h-[220px] sm:h-[260px] object-cover"></div><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1VFO6yzGi1JZJxbmIvcX_raioGNVxUiadx7RdpMi6rt_lLRAqufxoyHpMsIyl9NuBjMAQ4SppQw655RI1zY4O6VTXsVQWaPF3UsmpkajFEwtBEq8-HM8nO_ofItSYL_hcxYcUVnFmDDBfB7_hbtq1Ss8XqpJ6P6bMLdezaYSnhQ3bXcyNymUBk-RPETrGmLP3VZOMCC8KUDPN3JMVFAjYyURzNycpSNc6E3NY7lqJmZvDaoIm7L2EW7WNM" alt="Andalusian coastal village duplicate" class="w-full h-[220px] sm:h-[260px] object-cover"></div><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1XhFIhrGa_LO1KWXkbUYmx4NDVuNM9swUYkF1YERiNDCBncYFAsPsAO4AWZHoBOWtQJCU3lQxNRjZ3JHa-Q2TWoBaVz-gntPIoFtBr0YH4mkXL9l1MS8msTWzIeuxWyIt-_B2LC-T7R7Dt83uZU3KbAkYYivlpGaUp8qkZT2WLZ1DocSztoSfONx_-DHxPBWivfOUE-4nckroRY_41wM-VEBfP-XL_O8rocyJWjqYSOsrTa51f93Vr69n4" alt="Friends sharing tapas duplicate" class="w-full h-[220px] sm:h-[260px] object-cover"></div></div><div class="carousel-up flex flex-col gap-4 sm:gap-5"><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1Uv3pfcFNt-ERSayVoFaSkNHu9aUNCRGi_U83oSEBwjdrMSUQxPFeHFXIRASqGY-JYtnThBQUPk7jDhOGwn_REn0l5aN3PNVxOKGSN6827M2L7TB-ZT9yNC8kXkUUSmfNxc1ntDBHWfhx_Dx98Xsv_NKoQgIb_G46X2T337IhLmr_ErrMMO9KhaRnzTsD0nkTg5YACMMfLwgkB2mWUuuxfY8xsqYYWXEhJP7e_28S3n4RgoLx4Ptrv9gwc" alt="Artisan conversation in courtyard" class="w-full h-[220px] sm:h-[260px] object-cover"></div><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1XuSyr9zLt9xSUDA7qO3U4yTK1v-Oc6qxDbSJxKFu97Xs33TVdtwzahf8v7lT_o4kwf1tckPS2BKDQuB7mruPTGPqVorN6X3Cb-m7ZIgKTo4LKAJLNB56VOyyKcGRuUCbyjrmDOioycfMKBNex3SfDC2GUAC9IyKWpTEvA80eZSVdfLczWPVXS0sl9xjFqN038BB4pZS23EtCW-7EkBw1RKFxirZCkbzYQBBtBvF31JWtLT5E32u37YYL0" alt="Spanish flamenco guitar" class="w-full h-[220px] sm:h-[260px] object-cover"></div><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1Uv3pfcFNt-ERSayVoFaSkNHu9aUNCRGi_U83oSEBwjdrMSUQxPFeHFXIRASqGY-JYtnThBQUPk7jDhOGwn_REn0l5aN3PNVxOKGSN6827M2L7TB-ZT9yNC8kXkUUSmfNxc1ntDBHWfhx_Dx98Xsv_NKoQgIb_G46X2T337IhLmr_ErrMMO9KhaRnzTsD0nkTg5YACMMfLwgkB2mWUuuxfY8xsqYYWXEhJP7e_28S3n4RgoLx4Ptrv9gwc" alt="Artisan conversation duplicate" class="w-full h-[220px] sm:h-[260px] object-cover"></div><div class="overflow-hidden rounded-[14px] shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida/AEtjO1XuSyr9zLt9xSUDA7qO3U4yTK1v-Oc6qxDbSJxKFu97Xs33TVdtwzahf8v7lT_o4kwf1tckPS2BKDQuB7mruPTGPqVorN6X3Cb-m7ZIgKTo4LKAJLNB56VOyyKcGRuUCbyjrmDOioycfMKBNex3SfDC2GUAC9IyKWpTEvA80eZSVdfLczWPVXS0sl9xjFqN038BB4pZS23EtCW-7EkBw1RKFxirZCkbzYQBBtBvF31JWtLT5E32u37YYL0" alt="Spanish flamenco guitar duplicate" class="w-full h-[220px] sm:h-[260px] object-cover"></div></div></div></div></div></section>
+<!-- SECTION 8: Editorial Photo Grid ("The Feel of Spain") -->
+<section class="px-6 bg-[#FAF8F5] relative overflow-hidden border-b border-[#E8DFC8] pt-28 pb-28" id="journal">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+<span class="font-sans font-bold text-[18vw] tracking-[0.25em] text-[#1C1916]/[0.03] uppercase leading-none whitespace-nowrap">JOURNAL</span>
+</div>
+<div class="max-w-[1280px] mx-auto relative z-10">
+<div class="mb-12 text-left">
+<span class="text-[#8C7B6B] text-xs font-semibold tracking-[0.28em] uppercase block mb-3">TRAVEL JOURNAL</span>
+<h2 class="font-serif font-semibold text-4xl sm:text-5xl text-[#1C1916] tracking-tight leading-tight">
+        From the Biznaga Journal
+      </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch"><div class="flex flex-col gap-6"><div class="flex-1 min-h-[260px] rounded-[12px] overflow-hidden relative group cursor-pointer shadow-sm"><img alt="Tapas in Granada tavern" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1XhFIhrGa_LO1KWXkbUYmx4NDVuNM9swUYkF1YERiNDCBncYFAsPsAO4AWZHoBOWtQJCU3lQxNRjZ3JHa-Q2TWoBaVz-gntPIoFtBr0YH4mkXL9l1MS8msTWzIeuxWyIt-_B2LC-T7R7Dt83uZU3KbAkYYivlpGaUp8qkZT2WLZ1DocSztoSfONx_-DHxPBWivfOUE-4nckroRY_41wM-VEBfP-XL_O8rocyJWjqYSOsrTa51f93Vr69n4"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-6"><span class="text-gold text-[11px] font-semibold uppercase tracking-wider mb-1 block">Granada · 4 min read</span><h3 class="font-serif font-bold text-lg md:text-xl text-white leading-snug">Tapas, Tinajas &amp; Time: The Lost Taverns of Granada</h3></div></div><div class="flex-1 min-h-[260px] rounded-[12px] overflow-hidden relative group cursor-pointer shadow-sm"><img alt="Flamenco guitar in Seville patio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1XuSyr9zLt9xSUDA7qO3U4yTK1v-Oc6qxDbSJxKFu97Xs33TVdtwzahf8v7lT_o4kwf1tckPS2BKDQuB7mruPTGPqVorN6X3Cb-m7ZIgKTo4LKAJLNB56VOyyKcGRuUCbyjrmDOioycfMKBNex3SfDC2GUAC9IyKWpTEvA80eZSVdfLczWPVXS0sl9xjFqN038BB4pZS23EtCW-7EkBw1RKFxirZCkbzYQBBtBvF31JWtLT5E32u37YYL0"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-6"><span class="text-gold text-[11px] font-semibold uppercase tracking-wider mb-1 block">Seville · 6 min read</span><h3 class="font-serif font-bold text-lg md:text-xl text-white leading-snug">The Flamenco Pulse of Triana: Where Strings Speak</h3></div></div></div><div class="rounded-[12px] overflow-hidden relative group cursor-pointer shadow-md min-h-[480px] md:min-h-[560px] flex flex-col justify-end"><img alt="Andalusian coastal village" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 z-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VFO6yzGi1JZJxbmIvcX_raioGNVxUiadx7RdpMi6rt_lLRAqufxoyHpMsIyl9NuBjMAQ4SppQw655RI1zY4O6VTXsVQWaPF3UsmpkajFEwtBEq8-HM8nO_ofItSYL_hcxYcUVnFmDDBfB7_hbtq1Ss8XqpJ6P6bMLdezaYSnhQ3bXcyNymUBk-RPETrGmLP3VZOMCC8KUDPN3JMVFAjYyURzNycpSNc6E3NY7lqJmZvDaoIm7L2EW7WNM"><div class="relative z-10 bg-gradient-to-t from-black/90 via-black/45 to-transparent p-8"><span class="inline-block self-start px-3 py-1 rounded-full bg-[#C4622D] text-white text-[11px] font-semibold tracking-wider uppercase mb-3 shadow-sm">Cover Story · 8 min read</span><h3 class="font-serif font-bold text-2xl sm:text-3xl text-white leading-tight mb-2">White Villages &amp; Azure Horizons: A Slow Journey Through Andalusia’s Secret Coast</h3><p class="text-white/80 text-sm hidden sm:block font-normal leading-relaxed line-clamp-2">Wandering through cobblestone alleys fragrant with jasmine, where fisherman ports meet whitewashed clifftops untouched by time.</p></div></div><div class="flex flex-col gap-6"><div class="flex-1 min-h-[260px] rounded-[12px] overflow-hidden relative group cursor-pointer shadow-sm"><img alt="Artisan in Seville" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Uv3pfcFNt-ERSayVoFaSkNHu9aUNCRGi_U83oSEBwjdrMSUQxPFeHFXIRASqGY-JYtnThBQUPk7jDhOGwn_REn0l5aN3PNVxOKGSN6827M2L7TB-ZT9yNC8kXkUUSmfNxc1ntDBHWfhx_Dx98Xsv_NKoQgIb_G46X2T337IhLmr_ErrMMO9KhaRnzTsD0nkTg5YACMMfLwgkB2mWUuuxfY8xsqYYWXEhJP7e_28S3n4RgoLx4Ptrv9gwc"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-6"><span class="text-gold text-[11px] font-semibold uppercase tracking-wider mb-1 block">Craft &amp; Heritage · 5 min read</span><h3 class="font-serif font-bold text-lg md:text-xl text-white leading-snug">The Hands of Seville: Meeting the Master Ceramicists</h3></div></div><div class="flex-1 min-h-[260px] rounded-[12px] overflow-hidden relative group cursor-pointer shadow-sm"><img alt="Spanish tavern feast" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1XhFIhrGa_LO1KWXkbUYmx4NDVuNM9swUYkF1YERiNDCBncYFAsPsAO4AWZHoBOWtQJCU3lQxNRjZ3JHa-Q2TWoBaVz-gntPIoFtBr0YH4mkXL9l1MS8msTWzIeuxWyIt-_B2LC-T7R7Dt83uZU3KbAkYYivlpGaUp8qkZT2WLZ1DocSztoSfONx_-DHxPBWivfOUE-4nckroRY_41wM-VEBfP-XL_O8rocyJWjqYSOsrTa51f93Vr69n4"><div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-6"><span class="text-gold text-[11px] font-semibold uppercase tracking-wider mb-1 block">Gastronomy · 5 min read</span><h3 class="font-serif font-bold text-lg md:text-xl text-white leading-snug">Under the Olive Groves: A Harvest Feast in Jaén</h3></div></div></div></div>
+<div class="mt-12 text-center">
+<a class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#C4622D] hover:bg-[#a85223] text-white font-medium text-sm tracking-wide shadow-sm hover:shadow transition-all group" href="#contact">
+<span class="">Read All Stories</span>
+<span class="group-hover:translate-x-1 transition-transform">›</span>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION 9: How We Work Together (6-Step Process) - Warm Deep Bodega Espresso #2C1A0E -->
+<section class="py-28 px-6 bg-[#D8C7B5] text-ink">
+<div class="max-w-[1280px] mx-auto">
+<div class="text-center max-w-2xl mx-auto mb-20">
+<span class="text-gold text-[12px] tracking-[0.25em] uppercase font-bold block mb-3">Our Process</span>
+<h2 class="font-serif text-3xl sm:text-5xl font-normal text-ink">
+          How We Craft Your Journey
+        </h2>
+</div>
+<!-- 6-step horizontal timeline -->
+<div class="relative grid grid-cols-2 md:grid-cols-6 gap-8 mb-20">
+<!-- Connecting Line for desktop -->
+<div class="hidden md:block absolute top-4 left-8 right-8 h-[1px] bg-gold/50 z-0"></div>
+<!-- Step 1 -->
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-9 h-9 rounded-full bg-terracotta text-white font-serif font-bold text-sm flex items-center justify-center mb-4 shadow">1</div>
+<h4 class="font-medium text-[15px] mb-2 text-ink">Get a Feel</h4>
+<p class="text-xs leading-relaxed text-[#56433a]">Explore stories, share aspirations and dates.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-9 h-9 rounded-full bg-terracotta text-white font-serif font-bold text-sm flex items-center justify-center mb-4 shadow">2</div>
+<h4 class="font-medium text-[15px] mb-2 text-ink">Let’s Chat</h4>
+<p class="text-xs leading-relaxed text-[#56433a]">A warm 30-minute discovery call with Casey.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-9 h-9 rounded-full bg-terracotta text-white font-serif font-bold text-sm flex items-center justify-center mb-4 shadow">3</div>
+<h4 class="font-medium text-[15px] mb-2 text-ink">We Handcraft</h4>
+<p class="text-xs leading-relaxed text-[#56433a]">Custom itinerary built with our private local black book.</p>
+</div>
+<!-- Step 4 -->
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-9 h-9 rounded-full bg-terracotta text-white font-serif font-bold text-sm flex items-center justify-center mb-4 shadow">4</div>
+<h4 class="font-medium text-[15px] mb-2 text-ink">We Take Care</h4>
+<p class="text-xs leading-relaxed text-[#56433a]">Every reservation, transfer, and host coordinated.</p>
+</div>
+<!-- Step 5 -->
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-9 h-9 rounded-full bg-terracotta text-white font-serif font-bold text-sm flex items-center justify-center mb-4 shadow">5</div>
+<h4 class="font-medium text-[15px] mb-2 text-ink">You’re in Spain</h4>
+<p class="text-xs leading-relaxed text-[#56433a]">Unwind with 24/7 on-ground assistance.</p>
+</div>
+<!-- Step 6 -->
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-9 h-9 rounded-full bg-terracotta text-white font-serif font-bold text-sm flex items-center justify-center mb-4 shadow">6</div>
+<h4 class="font-medium text-[15px] mb-2 text-ink">And After</h4>
+<p class="text-xs leading-relaxed text-[#56433a]">Memories shared and your next Spanish chapter begins.</p>
+</div>
+</div>
+<div class="text-center">
+<p class="font-serif italic text-2xl text-gold max-w-2xl mx-auto">
+          “From the first conversation to the day you land home — we are with you.”
+        </p>
+</div>
+</div>
+</section>
+<!-- SECTION 10: Testimonials ("Stories from Spain") Rebuilt Interactive Fluid Drag-to-Scroll Slider -->
+<section class="py-28 overflow-hidden relative select-none bg-white" id="stories">
+<div class="max-w-[1400px] mx-auto text-center px-6 mb-12">
+<span class="text-terracotta text-[12px] tracking-[0.25em] uppercase font-bold block mb-3">Traveller Words</span>
+<h2 class="font-serif italic font-bold text-4xl sm:text-5xl text-ink max-w-2xl mx-auto">
+        Stories from Spain
+      </h2>
+<p class="text-dust text-xs sm:text-sm mt-3 tracking-wide">Drag horizontally to explore notes from our travellers</p>
+</div>
+<!-- Horizontal Drag-to-Scroll Container (No buttons, smooth drag) -->
+<div class="w-full overflow-x-auto no-scrollbar drag-slider pb-12 pt-6 px-8 md:px-16" id="testimonial-drag-track">
+<div class="flex items-center gap-6 md:gap-8 w-max">
+<!-- Card 1: Deep Forest Green (Tilted -4deg, slightly lower) -->
+<div class="testimonial-card w-[320px] sm:w-[380px] md:w-[410px] min-h-[380px] sm:min-h-[420px] p-8 sm:p-10 rounded-[22px] bg-[#28583B] text-white shadow-lg flex flex-col justify-between relative overflow-hidden flex-shrink-0 transform -rotate-[4deg] translate-y-3">
+<!-- Watermark flourish background SVG -->
+<svg class="absolute -bottom-8 -right-8 w-56 h-56 text-[#ffffff] opacity-[0.07] pointer-events-none stroke-current fill-none" viewBox="0 0 200 200">
+<path d="M20,100 C40,40 120,20 160,80 C200,140 130,190 70,160 C20,130 50,60 100,50 C140,40 170,90 150,130" stroke-linecap="round" stroke-width="24"></path>
+</svg>
+<div class="relative z-10">
+<p class="text-[15px] sm:text-[16px] leading-[1.65] font-normal text-white/95">
+          “Across many agencies, none matched the thoughtful care Biznaga delivered. Every moment felt intentionally crafted, from seamless logistics to gentle guidance. I felt supported, inspired, and truly understood — a journey beautifully shaped with real heart, unforgettable memories, and lasting meaning.”
+        </p>
+</div>
+<div class="flex items-center gap-4 relative z-10 pt-6">
+<img alt="Charlotte Hayes" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/30 flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0gaRJy3amgrMjOQArCY62Yx311Ro5GbQCgW3p0hvApYAV1aKOdJRaCL7-QGT9qf2RfQECcpEZEtpIBOKf5TY3_fNPTeevN4WX2XICp6sdcpk9wSSW3BUck2R5--5S-WcdsHGS0H1Pne38XQHvYPsEv6889A--1zwwVA1pKdZ6zWi5zMIGqm0pD7jjvGs3mrIUFw7OpAjmSPBZhu2v_2XXaQ6Znb4VTRrxsYryq372WRqpHM09rGon">
+<div>
+<h4 class="font-bold text-[15px] text-white tracking-wide">Charlotte Hayes</h4>
+<span class="text-white/70 text-xs">London, UK</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Crisp White Card (Tilted +3deg, slightly elevated) -->
+<div class="testimonial-card w-[320px] sm:w-[380px] md:w-[410px] min-h-[380px] sm:min-h-[420px] p-8 sm:p-10 rounded-[22px] bg-[#FFFFFF] text-[#1C1916] shadow-xl flex flex-col justify-between relative overflow-hidden flex-shrink-0 transform rotate-[3deg] -translate-y-4" style="background-color: rgb(232, 230, 225);">
+<!-- Watermark flourish background SVG -->
+<svg class="absolute -bottom-10 -right-10 w-60 h-60 text-[#28583B] opacity-[0.06] pointer-events-none stroke-current fill-none" viewBox="0 0 200 200">
+<path d="M20,100 C40,40 120,20 160,80 C200,140 130,190 70,160 C20,130 50,60 100,50 C140,40 170,90 150,130" stroke-linecap="round" stroke-width="26"></path>
+</svg>
+<div class="relative z-10">
+<p class="text-[15px] sm:text-[16px] leading-[1.65] font-normal text-[#2C2723]">
+          “Every element of our trip reflected thoughtfulness and care. Biznaga didn’t just plan a journey — they curated an experience filled with meaning and wonder.”
+        </p>
+</div>
+<div class="flex items-center gap-4 relative z-10 pt-6">
+<img alt="Ethan Carter" class="w-12 h-12 rounded-full object-cover ring-2 ring-black/10 flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu9KN_RmDGURESCe6YkmKLGegXw_IiOW6yXyuhnQUwwgXpmUNcP9FyRjDEB6O__DDMQbFEVXVQtAoCkIYorKVBcdk9CYOgWRx9MyJb7_-fbhb3DQ9lGcSuMkxi0FcRYlHq6KDGzI1f3wS73OeAYn1f_vYiEnmU06R1vCDWIwZU83A94UNlBMmAAVPmlRNqpsFX3Fw3wkaXA6PkGZAKPH6xx5MjTfZU4UyDFahS-FClfgsEHHunkh67">
+<div>
+<h4 class="font-bold text-[15px] text-[#1C1916] tracking-wide">Ethan Carter</h4>
+<span class="text-[#8C7B6B] text-xs">New York, USA</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Deep Forest Green (Tilted -3deg, mid height) -->
+<div class="testimonial-card w-[320px] sm:w-[380px] md:w-[410px] min-h-[380px] sm:min-h-[420px] p-8 sm:p-10 rounded-[22px] bg-[#28583B] text-white shadow-lg flex flex-col justify-between relative overflow-hidden flex-shrink-0 transform -rotate-[3deg] translate-y-2">
+<!-- Watermark flourish background SVG -->
+<svg class="absolute -bottom-8 -right-8 w-56 h-56 text-[#ffffff] opacity-[0.07] pointer-events-none stroke-current fill-none" viewBox="0 0 200 200">
+<path d="M20,100 C40,40 120,20 160,80 C200,140 130,190 70,160 C20,130 50,60 100,50 C140,40 170,90 150,130" stroke-linecap="round" stroke-width="24"></path>
+</svg>
+<div class="relative z-10">
+<p class="text-[15px] sm:text-[16px] leading-[1.65] font-normal text-white/95">
+          “I’ve traveled with many agencies, but Biznaga stands out for its genuine care. Every detail was handled with quiet precision, and I always felt safe, informed, and inspired throughout the entire experience. It wasn’t just a vacation — it was a journey beautifully crafted with heart.”
+        </p>
+</div>
+<div class="flex items-center gap-4 relative z-10 pt-6">
+<img alt="Luca Bianchi" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/30 flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_x0UesSk8ISS4nSYOF3_xwqH4ufHjSuzwB6llmJ9tq0Y4Z03ebaEy4CH5w9hQQUwbft4zCFK3zcFtg9RpMu7Dx7AaOLYxEmscWWbmhmMJ5A_9_cVzuDEv_cV8zk1MtvpRmmLXiQVkoUgrKt8SNKFW5WI6uvC1PeVeQ1lj9zyIuGQ0gXBgJ_cXNWl87iqjLNW49V5YAlEH1dlwpGk2y-jJZ-rLhRaljfuisbnRbMXe8SZg3j24bHgZ">
+<div>
+<h4 class="font-bold text-[15px] text-white tracking-wide">Luca Bianchi</h4>
+<span class="text-white/70 text-xs">Milan, Italy</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Crisp White Card (Tilted +4deg, slightly elevated) -->
+<div class="testimonial-card w-[320px] sm:w-[380px] md:w-[410px] min-h-[380px] sm:min-h-[420px] p-8 sm:p-10 rounded-[22px] bg-[#FFFFFF] text-[#1C1916] shadow-xl flex flex-col justify-between relative overflow-hidden flex-shrink-0 transform rotate-[4deg] -translate-y-3" style="background-color: rgb(232, 230, 225);">
+<!-- Watermark flourish background SVG -->
+<svg class="absolute -bottom-10 -right-10 w-60 h-60 text-[#28583B] opacity-[0.06] pointer-events-none stroke-current fill-none" viewBox="0 0 200 200">
+<path d="M20,100 C40,40 120,20 160,80 C200,140 130,190 70,160 C20,130 50,60 100,50 C140,40 170,90 150,130" stroke-linecap="round" stroke-width="26"></path>
+</svg>
+<div class="relative z-10">
+<p class="text-[15px] sm:text-[16px] leading-[1.65] font-normal text-[#2C2723]">
+          “From the first call to the final day, Biznaga delivered service that felt personal and attentive. I felt supported throughout the trip and returned with memories that stay with me forever.”
+        </p>
+</div>
+<div class="flex items-center gap-4 relative z-10 pt-6">
+<img alt="Sofia Martinez" class="w-12 h-12 rounded-full object-cover ring-2 ring-black/10 flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnv4eO6no8bFe-zbJ-z31UNjKexFPHzqGNKZtglTa1pXANOdGoCW6A0kM8YxkFV8i7xk0ZTLCuPGqu3TMdGzFwZlIp-t2saJQJatM1I3crzi_gWrn2KgeHG4hVW1JRYv0_zo_kQ-KakutjPw8ExFN8CEkrWFRLhmTkLoFXBAAr85Ef5odbjoTnKaXfSBTMbD85YJsGo_sQaKypDGE9tm_aGxckd4U49iNBSVlYw6GZ4Flm_4d-nbWh">
+<div>
+<h4 class="font-bold text-[15px] text-[#1C1916] tracking-wide">Sofia Martinez</h4>
+<span class="text-[#8C7B6B] text-xs">Barcelona, Spain</span>
+</div>
+</div>
+</div>
+<!-- Card 5: Deep Forest Green (Tilted -2deg, slight downward offset) -->
+<div class="testimonial-card w-[320px] sm:w-[380px] md:w-[410px] min-h-[380px] sm:min-h-[420px] p-8 sm:p-10 rounded-[22px] bg-[#28583B] text-white shadow-lg flex flex-col justify-between relative overflow-hidden flex-shrink-0 transform -rotate-[2deg] translate-y-4">
+<!-- Watermark flourish background SVG -->
+<svg class="absolute -bottom-8 -right-8 w-56 h-56 text-[#ffffff] opacity-[0.07] pointer-events-none stroke-current fill-none" viewBox="0 0 200 200">
+<path d="M20,100 C40,40 120,20 160,80 C200,140 130,190 70,160 C20,130 50,60 100,50 C140,40 170,90 150,130" stroke-linecap="round" stroke-width="24"></path>
+</svg>
+<div class="relative z-10">
+<p class="text-[15px] sm:text-[16px] leading-[1.65] font-normal text-white/95">
+          “Travel with Biznaga instilled a deep sense of calm. Unhurried, culturally focused, having every reservation and encounter feel intimate rather than rushed. We felt genuinely cared for, returning home with true purpose and wonder.”
+        </p>
+</div>
+<div class="flex items-center gap-4 relative z-10 pt-6">
+<img alt="Julian &amp; Claire Vance" class="w-12 h-12 rounded-full object-cover ring-2 ring-white/30 flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYFE7CoREaDpKyxJBSjbZzYDZkRaIMRAhxM0h4_aOh9jHA478n44hkK07GzGep53M3brU84vR9dpFBkGLGC4nHiH8sA7FyfoyEGqX_kxyT18-mH4rgq3XOeAr5jk6flVWYgI5B3grlG1q9xOuOmAGVr1OchnHl53JFPXX0iZLtou_hCMwEoHha4oU_918L7qlYPMuxkL2btmPR1Hqe4h1hvfwiQV0bnh5BSrwguvTe6s3LsPZ0vYIe">
+<div>
+<h4 class="font-bold text-[15px] text-white tracking-wide">Julian &amp; Claire Vance</h4>
+<span class="text-white/70 text-xs">San Francisco, USA</span>
+</div>
+</div>
+</div>
+<!-- Card 6: Crisp White Card (Tilted +3.5deg, elevated) -->
+<div class="testimonial-card w-[320px] sm:w-[380px] md:w-[410px] min-h-[380px] sm:min-h-[420px] p-8 sm:p-10 rounded-[22px] bg-[#FFFFFF] text-[#1C1916] shadow-xl flex flex-col justify-between relative overflow-hidden flex-shrink-0 transform rotate-[3.5deg] -translate-y-4" style="background-color: rgb(232, 230, 225);">
+<!-- Watermark flourish background SVG -->
+<svg class="absolute -bottom-10 -right-10 w-60 h-60 text-[#28583B] opacity-[0.06] pointer-events-none stroke-current fill-none" viewBox="0 0 200 200">
+<path d="M20,100 C40,40 120,20 160,80 C200,140 130,190 70,160 C20,130 50,60 100,50 C140,40 170,90 150,130" stroke-linecap="round" stroke-width="26"></path>
+</svg>
+<div class="relative z-10">
+<p class="text-[15px] sm:text-[16px] leading-[1.65] font-normal text-[#2C2723]">
+          “From Casey’s handwritten notes to her local fixers in Seville, you feel wrapped in genuine warmth every single day. A masterclass in luxury travel.”
+        </p>
+</div>
+<div class="flex items-center gap-4 relative z-10 pt-6">
+<img alt="Beatrice Fontaine" class="w-12 h-12 rounded-full object-cover ring-2 ring-black/10 flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDQkE3xswrpa_I3yCKEnz3cv1RcKnFE1mo0DWgNUVFEoTM94eGewuxAh22CUCJreIQ2wh10c_DffFZ36GN4YmwfpyfPbY3il6EcGxwNkx-JNkIDPWRn0tSEzUfTVcfRre109fD1og_1r8esDuaCnrKhLx5w5zYxZSZgjz_ZEvdSEfkxBJyOqLr1RrLOYDopOifUA_eH8fUwUcHCSJdAo5otxxLIdDHBGxWACeP-6m3n8w4bMFF3E2B">
+<div>
+<h4 class="font-bold text-[15px] text-[#1C1916] tracking-wide">Beatrice Fontaine</h4>
+<span class="text-[#8C7B6B] text-xs">Paris, France</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 11: Full-Width CTA / "Fall Into Spain" -->
+<section class="relative min-h-[580px] flex items-center border-t border-[#E8DFD0]" id="cta">
+<div class="absolute inset-0 z-0">
+<img alt="Spain golden hour landscape" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AEtjO1VFO6yzGi1JZJxbmIvcX_raioGNVxUiadx7RdpMi6rt_lLRAqufxoyHpMsIyl9NuBjMAQ4SppQw655RI1zY4O6VTXsVQWaPF3UsmpkajFEwtBEq8-HM8nO_ofItSYL_hcxYcUVnFmDDBfB7_hbtq1Ss8XqpJ6P6bMLdezaYSnhQ3bXcyNymUBk-RPETrGmLP3VZOMCC8KUDPN3JMVFAjYyURzNycpSNc6E3NY7lqJmZvDaoIm7L2EW7WNM">
+<div class="absolute inset-0 bg-ink/75 backdrop-blur-xs"></div>
+</div>
+<div class="max-w-[1280px] mx-auto px-6 py-20 relative z-10 w-full">
+<div class="max-w-2xl mx-auto text-center"><h2 class="font-serif italic font-bold text-4xl sm:text-6xl text-ivory mb-6 leading-tight">Fall into the <br>warm embrace of Spain.</h2><p class="text-[#D1D5DB] text-lg mb-10 font-normal leading-relaxed max-w-xl mx-auto">Let’s start with a conversation. No obligation — just a chance to dream and craft your ideal bespoke journey.</p><div class="space-y-4 flex flex-col items-center justify-center"><a class="inline-block px-10 py-4 bg-terracotta text-white rounded font-medium text-base tracking-wide hover:bg-[#a85223] transition-all shadow-lg transform hover:-translate-y-0.5 mx-auto" href="#contact">Book a Discovery Call</a><p class="text-dust text-xs tracking-wider text-center">Free 30-minute call · No commitment · Fully tailored to you</p></div></div>
+</div>
+</section>
+<!-- SECTION 12: Mailing List Signup -->
+<section class="py-20 px-6 bg-white text-center border-b border-[#E5DEC9]">
+<div class="max-w-xl mx-auto">
+<h3 class="font-serif text-2xl sm:text-3xl text-ink mb-3">
+        Stay inspired. Get Spain in your inbox.
+      </h3>
+<p class="text-dust text-sm mb-8">
+        Occasional travel stories, insider notes, and new journey announcements.
+      </p>
+<form class="flex flex-col sm:flex-row gap-3 justify-center mb-4" onsubmit="event.preventDefault()">
+<input class="px-5 py-3 rounded border border-dust/40 bg-white text-ink focus:outline-none focus:border-terracotta text-sm flex-1 max-w-sm" placeholder="Your email address" type="email">
+<button class="px-6 py-3 bg-terracotta text-white rounded text-sm font-medium hover:bg-[#a85223] transition-colors" type="submit">
+          Subscribe
+        </button>
+</form>
+<span class="text-dust text-xs">No spam. Unsubscribe any time.</span>
+</div>
+</section>
+<!-- SECTION 13: Redesigned Editorial Spanish Luxury Travel Footer -->
+<footer class="bg-[#141A6B] text-ivory relative" id="contact">
+<!-- Authentic full-bleed Talavera Azulejo tile band -->
+<div class="w-full h-16 sm:h-20 overflow-hidden border-b border-gold/40 relative">
+</div>
+<div class="max-w-[1280px] mx-auto px-6 md:px-12 pt-16 pb-12">
+<!-- Multi-Column Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
+<!-- Column 1: Brand & Socials (lg:col-span-4) -->
+<div class="lg:col-span-4 space-y-4">
+<span class="font-serif text-3xl font-bold tracking-[0.2em] text-white block">BIZNAGA</span>
+<p class="text-ivory/80 text-sm leading-relaxed max-w-sm font-normal">
+          Handcrafted bespoke journeys through Spain. Unhurried, intimate, unforgettable.
+        </p>
+<p class="text-xs text-dust italic">
+          Curated private travel &amp; cultural experiences.
+        </p>
+<!-- Social Icons with subtle round borders and hover states -->
+<div class="flex items-center gap-3 pt-2">
+<a aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center text-xs text-ivory/90 hover:text-gold hover:border-gold hover:bg-white/5 transition-all" href="#">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center text-xs text-ivory/90 hover:text-gold hover:border-gold hover:bg-white/5 transition-all" href="#">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"></path></svg>
+</a>
+<a aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center text-xs text-ivory/90 hover:text-gold hover:border-gold hover:bg-white/5 transition-all" href="#">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Column 2: Navigation / Discover (lg:col-span-2) -->
+<div class="lg:col-span-2 space-y-3">
+<span class="text-gold text-[11px] font-bold tracking-[0.2em] uppercase block">Discover</span>
+<ul class="space-y-2 text-[13px] text-ivory/75">
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#experience">Experience Spain</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#experience">Surrender to Spain</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#experience">Private Group Journeys</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#experience">Independent Travel</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#journal">Visual Journal</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#story">Our Story</a></li>
+</ul>
+</div>
+<!-- Column 3: Spain Destinations (lg:col-span-3) -->
+<div class="lg:col-span-3 space-y-3">
+<span class="text-gold text-[11px] font-bold tracking-[0.2em] uppercase block">Destinations</span>
+<ul class="space-y-2 text-[13px] text-ivory/75">
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#destinations">Seville &amp; Andalusia</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#destinations">Granada &amp; The Alhambra</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#destinations">San Sebastián &amp; Basque Country</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#destinations">Mallorca &amp; The Balearics</a></li>
+<li class=""><a class="hover:text-white hover:underline transition-colors" href="#destinations">Madrid &amp; La Rioja</a></li>
+</ul>
+</div>
+<!-- Column 4: Bespoke Concierge & Contact Card (lg:col-span-3) -->
+<div class="lg:col-span-3">
+<div class="bg-[#1E2A8C]/50 rounded-xl p-5 border border-white/15 space-y-4 shadow-sm">
+<div>
+<span class="text-gold text-[11px] font-bold tracking-[0.2em] uppercase block mb-1">Bespoke Concierge</span>
+<a class="font-medium text-white hover:text-gold text-sm block transition-colors" href="mailto:casey@biznaga.co">casey@biznaga.co</a>
+<a class="text-ivory/80 text-xs hover:text-white block mt-0.5" href="tel:+61424189737">+61 (0) 424 189 737</a>
+</div>
+<div class="text-[12px] text-dust border-t border-white/10 pt-3">
+<span class="block text-ivory/90 font-medium">Offices</span>
+<span class="">Seville, España · Sydney, Australia</span>
+</div>
+<div class="border border-gold/30 bg-[#141A6B]/60 rounded-lg p-3 text-center">
+<span class="text-gold text-sm">✦</span>
+<span class="font-serif italic text-ivory text-xs block mt-0.5">“Surrender to Spain”</span>
+<span class="text-[10px] tracking-widest text-dust uppercase block">Tailored with Discretion</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Sub-Footer Bar -->
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-dust">
+<div>
+<span class="">© 2026 Biznaga. All rights reserved.</span>
+<span class="mx-2 hidden sm:inline">·</span>
+<span class="italic text-ivory/60">Crafted for discerning travelers</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+<span class="text-ivory/50">Designed by Sommer Studio</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Drag-to-Scroll Script for Testimonials Slider -->
+<script>
+  const slider = document.getElementById('testimonial-drag-track');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  if (slider) {
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5; // scroll-fast multiplier
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+</body></html>
